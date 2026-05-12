@@ -5,6 +5,7 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import starter.ui.LoginPage;
+// Remove: import java.lang.annotation.Target;
 
 public class Login implements Task {
     @Override
