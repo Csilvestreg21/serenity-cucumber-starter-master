@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  postgres-db:
+    image: postgres:11
+    container_name: hlm-postgres-db
+    environment:
+      POSTGRES_DB: healenium
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+
+  hlm-backend:
+    image: healenium/hlm-backend:latest
+    container_name: hlm-backend
+    ports:
+      - "7878:7878"
+    depends_on:
+      - postgres-db
+
+  hlm-proxy:
+    image: healenium/hlm-proxy:latest
+    container_name: hlm-proxy
+    ports:
+      - "8085:8085"
