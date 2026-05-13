@@ -2,7 +2,6 @@ defaultTasks 'clean', 'test', 'aggregate'
 
 repositories {
     mavenCentral()
-    // Añade esta línea, es vital para Healenium
     maven { url "https://plugins.gradle.org/m2/" }
     maven { url "https://jitpack.io" }
 }
@@ -28,16 +27,12 @@ ext {
 }
 
 dependencies {
-    // Estas librerías contienen el paquete net.thucydides que pusiste en tu código
     implementation "net.serenity-bdd:serenity-core:4.0.15"
     implementation "net.serenity-bdd:serenity-cucumber:4.0.15"
     implementation "net.serenity-bdd:serenity-screenplay:4.0.15"
     implementation "net.serenity-bdd:serenity-screenplay-webdriver:4.0.15"
-
-    // JUnit 5 Platform (Para que CucumberTestSuite.java no falle)
     testImplementation "org.junit.platform:junit-platform-suite:1.10.2"
     testImplementation "io.cucumber:cucumber-junit-platform-engine:7.15.0"
-    
     testImplementation "io.github.bonigarcia:webdrivermanager:5.8.0"
 }
 

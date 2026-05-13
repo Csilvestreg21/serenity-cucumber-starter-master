@@ -1,8 +1,8 @@
 package stepdefinitions;
 
-import starter.tasks.Login; // Asegúrate de que el nombre del paquete coincida
+import starter.tasks.Login; 
 import net.serenitybdd.screenplay.actors.OnStage;
-import tasks.Abrir; // Reemplaza 'tasks' por el nombre real de tu paquete
+import tasks.Abrir;
 import io.cucumber.java.Before;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import io.cucumber.java.es.Cuando;
@@ -27,7 +27,6 @@ public class LoginStepDefinitions {
                 Login.conCredenciales(usuario, clave));
     }
 
-    // Asegúrate de incluir la tilde en "debería" si el feature la tiene
     @Entonces("debería ver el catálogo de productos")
     public void deberiaVerElCatalogoDeProductos() {
         System.out.println("LOG: Verificación exitosa en SauceDemo");
