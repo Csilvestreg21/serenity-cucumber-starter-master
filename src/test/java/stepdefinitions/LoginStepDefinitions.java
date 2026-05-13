@@ -1,23 +1,35 @@
 package stepdefinitions;
 
+import starter.tasks.Login; // Asegúrate de que el nombre del paquete coincida
+import net.serenitybdd.screenplay.actors.OnStage;
+import tasks.Abrir; // Reemplaza 'tasks' por el nombre real de tu paquete
+import io.cucumber.java.Before;
+import net.serenitybdd.screenplay.actors.OnlineCast;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
 
 public class LoginStepDefinitions {
 
-    @Dado("que el usuario está en la página de inicio")
-    public void queElUsuarioEstaEnLaPaginaDeInicio() {
-        System.out.println("LOG: El usuario llegó a la página");
+    @Before
+    public void setTheStage() {
+        OnStage.setTheStage(new OnlineCast());
     }
 
-    @Cuando("ingresa sus credenciales")
-    public void ingresaSusCredenciales() {
-        System.out.println("LOG: El usuario ingresó usuario y contraseña");
+    @Dado("que el usuario navega a la página de login")
+    public void queElUsuarioNavegaALaPaginaDeLogin() {
+        OnStage.theActorCalled("Cata").wasAbleTo(Abrir.laPaginaDeSauceDemo());
     }
 
-    @Entonces("deberia ver el titulo de la pagina de productos")
-    public void deberiaVerElTituloDeLaPaginaDeProductos() {
-        System.out.println("LOG: Verificación exitosa");
+    @Cuando("ingresa las credenciales {string} y {string}")
+    public void ingresaLasCredenciales(String usuario, String clave) {
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                Login.conCredenciales(usuario, clave));
+    }
+
+    // Asegúrate de incluir la tilde en "debería" si el feature la tiene
+    @Entonces("debería ver el catálogo de productos")
+    public void deberiaVerElCatalogoDeProductos() {
+        System.out.println("LOG: Verificación exitosa en SauceDemo");
     }
 }

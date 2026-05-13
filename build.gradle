@@ -43,9 +43,9 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    include '**/CucumberTestSuite.class' // Esto fuerza a Gradle a ejecutar específicamente tu runner
-    systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
-    maxHeapSize = "1024m"
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
 
 serenity {
